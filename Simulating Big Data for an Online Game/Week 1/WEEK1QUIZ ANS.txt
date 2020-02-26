@@ -1,0 +1,31 @@
+8162 9 eval Value=Value*100
+
+8162 9 6913 428 6 20 2
+
+
+
+source="flamingo-data.zip:.\\ad-clicks.csv" | stats count by adCategory | eval value=count*0.5 | stats sum(value)
+
+
+source="flamingo-data.zip:.\\ad-clicks.csv" | stats count by adCategory | stats count(count)
+
+
+
+source="flamingo-data.zip:.\\ad-clicks.csv" adCategory=electronics | stats count by adCategory | eval val=count*0.75
+
+source="flamingo-data.zip:.\\ad-clicks.csv" adCategory!=electronics | stats count by adCategory | eval val=count*0.4 | stats sum(val)
+
+
+
+
+source="flamingo-data.zip:.\\buy-clicks.csv" | stats sum(price) as totalvalue| eval revenue=totalvalue*0.02
+
+
+source="flamingo-data.zip:.\\buy-clicks.csv" | stats dc(buyId)
+
+
+source="flamingo-data.zip:.\\buy-clicks.csv" | stats max(price)
+
+
+source="flamingo-data.zip:.\\buy-clicks.csv" | stats mode(buyId)
+
